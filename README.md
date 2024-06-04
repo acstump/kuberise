@@ -37,8 +37,8 @@ export ADMIN_PASSWORD=<Enter a password for admin>
 export PG_SUPERUSER_PASSWORD=<Enter a password for postgres super admin>
 
 # example:
-export ADMIN_PASSWORD=eiKJFhjd34fks
-export PG_SUPERUSER_PASSWORD=kFHEkjf323kfsW
+export ADMIN_PASSWORD=admin
+export PG_SUPERUSER_PASSWORD=admin
 ```
 
 - Install kuberise (if you are using fork or your repository is public, you don't need to add a token at the end of this command)

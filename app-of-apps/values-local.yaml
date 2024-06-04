@@ -22,7 +22,7 @@ helmCharts:
     enabled: true
 
   todolist-frontend-dev:
-    enabled: true
+    enabled: false
 
   todolist-frontend-tst:
     enabled: true
@@ -37,7 +37,7 @@ helmCharts:
     enabled: true
 
   backstage:
-    enabled: true
+    enabled: false
 
   gitea:
     enabled: false
