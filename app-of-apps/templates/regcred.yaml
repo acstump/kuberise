@@ -1,13 +1,14 @@
-{{- range $App := .Values.Applications }}
-
+{{- range $name, $app := .Values.applications -}}
+{{ if .enabled }}
 apiVersion: v1
 kind: Secret
 metadata:
   name: regcred
-  namespace: {{ .appName }}-{{ .env }}
+  namespace: {{ default $name .name }}-{{ .env }}
 data:
   .dockerconfigjson: eyJhdXRocyI6eyJyZWdpc3RyeS5naXRsYWIuY29tIjp7InVzZXJuYW1lIjoiYXN0dW1wIiwicGFzc3dvcmQiOiJnbHBhdC1TcnQ0eXNFRDV5dHIxUDlONk1zVyIsImF1dGgiOiJZWE4wZFcxd09tZHNjR0YwTFZOeWREUjVjMFZFTlhsMGNqRlFPVTQyVFhOWCJ9fX0=
 type: kubernetes.io/dockerconfigjson
 
 {{ printf "---" }}
+{{- end }}
 {{- end }}
