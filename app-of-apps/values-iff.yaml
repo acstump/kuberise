@@ -13,11 +13,13 @@ applications:
   # A Kustomize application
   project1:
     enabled: true
+    env: dev
     repoURL: https://gitlab.com/iff-app/project1/automation.git
     path: argocd
 
   project2:
     enabled: false
+    env: dev
     repoURL: https://gitlab.com/iff-app/project2/automation.git
     path: argocd
 
