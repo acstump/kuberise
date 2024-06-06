@@ -5,7 +5,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: {{ default $name .name }}-{{ .env }}
+  name: {{ default $name .name }}
   namespace: argocd
 spec:
   clusterResourceWhitelist:
