@@ -1,0 +1,17 @@
+{{- range $App := .Values.Applications }}
+
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: {{ .appName }}-{{ .env }}-quota
+  namespace: {{ .appName }}-{{ .env }}
+spec:
+  hard:
+    requests.cpu: {{ .nsCpuQuota | default "1" }}
+    requests.memory: {{ .nsMemQuota | default "1Gi" }}
+    limits.cpu: {{ .nsCpuQuota | default "1" }}
+    limits.memory: {{ .nsMemQuota | default "1Gi" }}
+
+{{ printf "---" }}
+{{- end }}

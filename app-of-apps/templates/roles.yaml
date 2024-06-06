@@ -1,0 +1,40 @@
+{{- range $App := .Values.Applications }}
+
+{{- if .enableRoles }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: {{ .appName }}-{{ .env }}
+  name: {{ .appName }}-{{ .env }}-admin
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["deployments", "secrets", "replicasets", "persistentvolumes", "persistentvolumeclaims", "configmaps", "daemonsets", "jobs", "services", "ingress", "statefulset", "endpoints", "controllerrevision", "endpointslice", "serviceaccount" ]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: [""]
+  resources: ["pods", "pods/log"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: {{ .appName }}-{{ .env }}
+  name: {{ .appName }}-{{ .env }}-user
+rules:
+- apiGroups: [""] #
+  resources: ["deployments", "secrets", "replicasets", "persistentvolumes", "persistentvolumeclaims", "configmaps", "daemonsets", "jobs", "services", "ingress", "statefulset", "endpoints", "controllerrevision", "endpointslice", "serviceaccount" ]
+  verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["pods", "pods/log"]
+  verbs: ["get", "list"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["create"]
+
+{{ printf "---" }}
+{{- end }}
+{{- end }}

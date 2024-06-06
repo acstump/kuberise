@@ -1,0 +1,5 @@
+---
+{{ range $path, $_ :=  .Files.Glob  "role-bindings/**/**.yaml" }}
+{{ $.Files.Get $path }}
+{{ printf "---" }}
+{{ end }}
