@@ -22,7 +22,7 @@ spec:
     path: apps/{{ default $name .name }}
     {{- end }}
   destination:
-    namespace: {{ default $name .namespace }}
+    namespace: {{ default $name .namespace }}-{{ .env }}
     server: {{ $.Values.global.spec.destination.server }}
   syncPolicy:
     {{- if default $.Values.global.automated .automated }}
