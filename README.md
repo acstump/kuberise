@@ -47,7 +47,7 @@ export PG_SUPERUSER_PASSWORD=admin
 ./scripts/install.sh <KubernetesContext> <PlatformName> <RepoURL> <BranchName> <RepoToken>
 
 # example:
-./scripts/install.sh minikube local https://github.com/yourUserName/kuberise.git main
+
 ```
 
 ## Minikube and local installation
