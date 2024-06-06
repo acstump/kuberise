@@ -1,12 +1,13 @@
-{{- range $App := .Values.Applications }}
-
+{{- range $name, $app := .Values.applications -}}
+{{ if .enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ .appName }}-{{ .env }}
+  name: {{ default $name .name }}-{{ .env }}
   labels:
-    name: {{ .appName }}-{{ .env }}
+    name: {{ default $name .name }}-{{ .env }}
     goldilocks.fairwinds.com/enabled: "true"
 
 {{ printf "---" }}
+{{- end }}
 {{- end }}
